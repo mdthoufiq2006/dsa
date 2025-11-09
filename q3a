@@ -1,0 +1,53 @@
+class Node:
+    def __init__(self, v):
+        self.v = v
+        self.n = None
+
+class Queue:
+    def __init__(self):
+        self.f = self.r = None
+
+    def enqueue(self, x):
+        n = Node(x)
+        if self.r:
+            self.r.n = n
+        else:
+            self.f = n
+        self.r = n
+
+    def dequeue(self):
+        if not self.f:
+            return "empty"
+        v = self.f.v
+        self.f = self.f.n
+        if not self.f:
+            self.r = None
+        return v
+
+    def display(self):
+        if not self.f:
+            print("empty")
+            return
+        t = self.f
+        out = []
+        while t:
+            out.append(t.v)
+            t = t.n
+        print("queue:", out)
+
+q = Queue()
+
+while True:
+    print("\n1 enqueue\n2 dequeue\n3 display\n4 exit")
+    ch = input("enter choice: ")
+
+    if ch == "1":
+        q.enqueue(input("enter element: "))
+    elif ch == "2":
+        print("removed:", q.dequeue())
+    elif ch == "3":
+        q.display()
+    elif ch == "4":
+        break
+    else:
+        print("invalid choice")

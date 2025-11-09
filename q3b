@@ -1,0 +1,12 @@
+def selection_sort(a):
+    for i in range(len(a)-1):
+        m = min(range(i, len(a)), key=a._getitem_)
+        a[i], a[m] = a[m], a[i]
+    return a
+
+# taking input from user
+a = list(map(int, input("Enter elements: ").split()))
+
+print("Before:", a)
+selection_sort(a)
+print("Sorted:", a)
